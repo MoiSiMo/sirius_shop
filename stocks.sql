@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mar. 23 juil. 2019 à 11:46
+-- Généré le :  mar. 23 juil. 2019 à 14:43
 -- Version du serveur :  10.3.16-MariaDB
 -- Version de PHP :  7.1.30
 
@@ -115,7 +115,8 @@ CREATE TABLE `t_fournisseurs` (
 INSERT INTO `t_fournisseurs` (`NumFour`, `NomFour`, `AdrFour`, `CdePostFour`, `VilleFour`, `TelFixFour`, `TelFixFour2`, `FaxFour`, `EmailFour`, `SiteFour`) VALUES
 (1, 'Techno', 'Rue d\'Assaut 11', 1000, 'Bruxelles', '025131482', '025133706', '', 'techno-buro@skynet', 'www.technoburo.be'),
 (2, 'Lacroix S', 'Avenue des Courtils 9', 4684, 'Haccourt', '043792201', '', '', 'Lacroix.s@skynet.be', 'www.lacroixserge.be'),
-(3, 'Marcel Hees Bureautique', 'Rue Trappe 9', 4000, 'Liege', '042208830', '', '042235806', 'admin@hees-bureautique.be', 'www.hees-bureautique.be');
+(3, 'Marcel Hees Bureautique', 'Rue Trappe 9', 4000, 'Liege', '042208830', '', '042235806', 'admin@hees-bureautique.be', 'www.hees-bureautique.be'),
+(4, 'Lister Genius', 'Avenue Georges Henri', 1200, 'Woluwe-Saint-Lambert', '023473597', '081980098', '', 'listergenis@skype.be', 'www.mistergenius.be');
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,17 @@ INSERT INTO `t_produits` (`NumProd`, `NumFour`, `NomProd`, `NumSCat`) VALUES
 (1, 1, 'Zalman i3', 1),
 (2, 2, 'Cooler Master MasterBox Q300L', 1),
 (3, 1, 'Zalman i3', 1),
-(4, 2, 'Cooler Master MasterBox Q300L', 1);
+(4, 2, 'Cooler Master MasterBox Q300L', 1),
+(5, 2, 'Cooler Master MasterBox E500L Argent', 1),
+(6, 3, 'Cooler Master MasterCase H500', 1),
+(7, 1, 'Corsair Builder Series VS450 80PLUS V2', 2),
+(8, 2, 'Corsair Builder Series VS550 80PLUS V2', 2),
+(9, 3, 'Corsair Builder Series VS650 80PLUS V2', 2),
+(10, 2, 'Corsair RM650x V2 80PLUS Gold', 2),
+(11, 3, 'Seagate BarraCuda 2 To (ST2000DM008)', 3),
+(12, 1, 'Seagate BarraCuda 1 To (ST1000DM010)', 3),
+(13, 3, 'Samsung SSD 860 QVO 1 To', 3),
+(14, 1, 'Samsung SSD 860 EVO 500 Go', 3);
 
 -- --------------------------------------------------------
 
@@ -287,13 +298,13 @@ ALTER TABLE `t_factures`
 -- AUTO_INCREMENT pour la table `t_fournisseurs`
 --
 ALTER TABLE `t_fournisseurs`
-  MODIFY `NumFour` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `NumFour` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `t_produits`
 --
 ALTER TABLE `t_produits`
-  MODIFY `NumProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `NumProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `T_s_Categories`
