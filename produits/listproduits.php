@@ -2,12 +2,12 @@
 
 /* On ajoute la finction cors qui permet le cross-origin */
 /* pour authoriser l'appel du fichier entre backend et frontend*/
-require "cors.php";
+require "../library/cors.php";
 /*on appelle la fonction cors*/
 cors();
 
 /* connexion à la db */
-require "connexiondb.php";
+require "../library/connexiondb.php";
 
 /* on a ajouté le type du fichier */
 header('Content-Type: application/json');
