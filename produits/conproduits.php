@@ -1,8 +1,8 @@
 <?php
 
 /* On authorise les requêtes provenant de n'importe quel origine  */
-require "../libs/cors.php";
-require "../libs/connexiondb.php";
+require "../library/cors.php";
+require "../lib/connexiondb.php";
 cors();
 
 /* On spécifie que le document généré doit être au format json */
