@@ -1,11 +1,15 @@
-<?php
+<<?php
 
-/* On authorise les requêtes provenant de n'importe quel origine  */
+/* On ajoute la finction cors qui permet le cross-origin */
+/* pour authoriser l'appel du fichier entre backend et frontend*/
 require "../library/cors.php";
-require "../lib/connexiondb.php";
+/*on appelle la fonction cors*/
 cors();
 
-/* On spécifie que le document généré doit être au format json */
+/* connexion à la db */
+require "../library/connexiondb.php";
+
+/* on a ajouté le type du fichier */
 header('Content-Type: application/json');
 
 /* Réponse par défaut*/
@@ -15,7 +19,7 @@ $response = [
     "data"          => NULL
 ];
 
-if(!isset($_REQUEST["id_produits"]) || empty($_REQUEST["id_produits"]) || !is_numeric($_REQUEST["id_produits"]))
+if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_REQUEST["NumProd"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
@@ -25,8 +29,8 @@ if(!isset($_REQUEST["id_produits"]) || empty($_REQUEST["id_produits"]) || !is_nu
 $id_produits = $_REQUEST["id_produits"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT * FROM produits WHERE id_produits = :id_produits');
-$sth->bindValue(":id_produits", $id_produits, PDO::PARAM_INT);
+$sth = $bdd->prepare('SELECT * FROM produits WHERE NumProd = :NumProd');
+$sth->bindValue(":NumProds", $id_produits, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)

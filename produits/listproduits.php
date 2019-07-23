@@ -41,7 +41,7 @@ if($stmtnt && $stmtnt->rowCount() > 0)
     //on récuèpre le résultat et on le met sur la ligne
     //on traite l'entrée du résultat de la requête
     $toutes_lignes = $stmtnt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump ($toutes_lignes);
+   
     //on met le nom et le prenom dans $reponse["data"]
     $reponse["data"] = $toutes_lignes;
     //on dit qu'il n'y a pas d'erreur
