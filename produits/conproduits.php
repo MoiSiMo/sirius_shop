@@ -1,8 +1,8 @@
 <?php
 
 /* On authorise les requêtes provenant de n'importe quel origine  */
-require "../libs/cors.php";
-require "../libs/connexiondb.php";
+require "../library/cors.php";
+require "../library/connexiondb.php";
 cors();
 
 /* On spécifie que le document généré doit être au format json */
@@ -15,7 +15,7 @@ $response = [
     "data"          => NULL
 ];
 
-if(!isset($_REQUEST["id_produits"]) || empty($_REQUEST["id_produits"]) || !is_numeric($_REQUEST["id_produits"]))
+if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_REQUEST["NumProd"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
@@ -25,8 +25,8 @@ if(!isset($_REQUEST["id_produits"]) || empty($_REQUEST["id_produits"]) || !is_nu
 $id_produits = $_REQUEST["id_produits"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT * FROM produits WHERE id_produits = :id_produits');
-$sth->bindValue(":id_produits", $id_produits, PDO::PARAM_INT);
+$sth = $bdd->prepare('SELECT * FROM produits WHERE NumProd = :NumProd');
+$sth->bindValue(":NumProds", $id_produits, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
