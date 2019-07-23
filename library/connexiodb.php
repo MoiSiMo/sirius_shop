@@ -1,7 +1,7 @@
 
             <?php
             $host='localhost';
-            $dbname='sirius_school';
+            $dbname='stocks';
             $charset='utf8';
             $dbuser='root';
             $dbpwd='';
