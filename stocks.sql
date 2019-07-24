@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le :  mar. 23 juil. 2019 à 14:43
+-- Hôte : 127.0.0.1
+-- Généré le :  mer. 24 juil. 2019 à 10:24
 -- Version du serveur :  10.3.16-MariaDB
--- Version de PHP :  7.1.30
+-- Version de PHP :  7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -38,19 +38,19 @@ CREATE TABLE `t_achatsproduits` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `T_Categories`
+-- Structure de la table `t_categories`
 --
 
-CREATE TABLE `T_Categories` (
+CREATE TABLE `t_categories` (
   `NumCat` int(11) NOT NULL,
   `NomCat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `T_Categories`
+-- Déchargement des données de la table `t_categories`
 --
 
-INSERT INTO `T_Categories` (`NumCat`, `NomCat`) VALUES
+INSERT INTO `t_categories` (`NumCat`, `NomCat`) VALUES
 (1, 'Pièces informatique'),
 (2, 'Périphérique PC'),
 (3, 'Ordinateur portable'),
@@ -128,46 +128,48 @@ CREATE TABLE `t_produits` (
   `NumProd` int(11) NOT NULL,
   `NumFour` int(11) NOT NULL,
   `NomProd` varchar(50) NOT NULL,
-  `NumSCat` int(11) NOT NULL
+  `NumSCat` int(11) NOT NULL,
+  `QtProd` int(11) NOT NULL,
+  `QtMinProd` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `t_produits`
 --
 
-INSERT INTO `t_produits` (`NumProd`, `NumFour`, `NomProd`, `NumSCat`) VALUES
-(1, 1, 'Zalman i3', 1),
-(2, 2, 'Cooler Master MasterBox Q300L', 1),
-(3, 1, 'Zalman i3', 1),
-(4, 2, 'Cooler Master MasterBox Q300L', 1),
-(5, 2, 'Cooler Master MasterBox E500L Argent', 1),
-(6, 3, 'Cooler Master MasterCase H500', 1),
-(7, 1, 'Corsair Builder Series VS450 80PLUS V2', 2),
-(8, 2, 'Corsair Builder Series VS550 80PLUS V2', 2),
-(9, 3, 'Corsair Builder Series VS650 80PLUS V2', 2),
-(10, 2, 'Corsair RM650x V2 80PLUS Gold', 2),
-(11, 3, 'Seagate BarraCuda 2 To (ST2000DM008)', 3),
-(12, 1, 'Seagate BarraCuda 1 To (ST1000DM010)', 3),
-(13, 3, 'Samsung SSD 860 QVO 1 To', 3),
-(14, 1, 'Samsung SSD 860 EVO 500 Go', 3);
+INSERT INTO `t_produits` (`NumProd`, `NumFour`, `NomProd`, `NumSCat`, `QtProd`, `QtMinProd`) VALUES
+(1, 1, 'Zalman i3', 1, 5, 2),
+(2, 2, 'Cooler Master MasterBox Q300L', 1, 10, 2),
+(3, 1, 'Zalman i3', 1, 20, 2),
+(4, 2, 'Cooler Master MasterBox Q300L', 1, 11, 2),
+(5, 2, 'Cooler Master MasterBox E500L Argent', 1, 5, 2),
+(6, 3, 'Cooler Master MasterCase H500', 1, 6, 2),
+(7, 1, 'Corsair Builder Series VS450 80PLUS V2', 2, 4, 2),
+(8, 2, 'Corsair Builder Series VS550 80PLUS V2', 2, 6, 2),
+(9, 3, 'Corsair Builder Series VS650 80PLUS V2', 2, 8, 2),
+(10, 2, 'Corsair RM650x V2 80PLUS Gold', 2, 7, 2),
+(11, 3, 'Seagate BarraCuda 2 To (ST2000DM008)', 3, 4, 2),
+(12, 1, 'Seagate BarraCuda 1 To (ST1000DM010)', 3, 9, 2),
+(13, 3, 'Samsung SSD 860 QVO 1 To', 3, 12, 2),
+(14, 1, 'Samsung SSD 860 EVO 500 Go', 3, 14, 2);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `T_s_Categories`
+-- Structure de la table `t_s_categories`
 --
 
-CREATE TABLE `T_s_Categories` (
+CREATE TABLE `t_s_categories` (
   `NumSCat` int(11) NOT NULL,
   `NomSCat` varchar(50) NOT NULL,
   `NumCat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `T_s_Categories`
+-- Déchargement des données de la table `t_s_categories`
 --
 
-INSERT INTO `T_s_Categories` (`NumSCat`, `NomSCat`, `NumCat`) VALUES
+INSERT INTO `t_s_categories` (`NumSCat`, `NomSCat`, `NumCat`) VALUES
 (1, 'Boîtier', 1),
 (2, 'Alimentation PC', 1),
 (3, 'Disque dur & SSD', 1),
@@ -213,9 +215,9 @@ ALTER TABLE `t_achatsproduits`
   ADD KEY `NumProd` (`NumProd`);
 
 --
--- Index pour la table `T_Categories`
+-- Index pour la table `t_categories`
 --
-ALTER TABLE `T_Categories`
+ALTER TABLE `t_categories`
   ADD PRIMARY KEY (`NumCat`),
   ADD UNIQUE KEY `NumCat` (`NumCat`);
 
@@ -251,9 +253,9 @@ ALTER TABLE `t_produits`
   ADD KEY `NumSCat` (`NumSCat`);
 
 --
--- Index pour la table `T_s_Categories`
+-- Index pour la table `t_s_categories`
 --
-ALTER TABLE `T_s_Categories`
+ALTER TABLE `t_s_categories`
   ADD PRIMARY KEY (`NumSCat`),
   ADD UNIQUE KEY `NumSCat` (`NumSCat`),
   ADD KEY `NumCat` (`NumCat`);
@@ -277,9 +279,9 @@ ALTER TABLE `t_achatsproduits`
   MODIFY `NumAchProd` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `T_Categories`
+-- AUTO_INCREMENT pour la table `t_categories`
 --
-ALTER TABLE `T_Categories`
+ALTER TABLE `t_categories`
   MODIFY `NumCat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
@@ -307,9 +309,9 @@ ALTER TABLE `t_produits`
   MODIFY `NumProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT pour la table `T_s_Categories`
+-- AUTO_INCREMENT pour la table `t_s_categories`
 --
-ALTER TABLE `T_s_Categories`
+ALTER TABLE `t_s_categories`
   MODIFY `NumSCat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
@@ -339,13 +341,13 @@ ALTER TABLE `t_factures`
 --
 ALTER TABLE `t_produits`
   ADD CONSTRAINT `t_produits_ibfk_1` FOREIGN KEY (`NumFour`) REFERENCES `t_fournisseurs` (`NumFour`),
-  ADD CONSTRAINT `t_produits_ibfk_2` FOREIGN KEY (`NumSCat`) REFERENCES `T_s_Categories` (`NumSCat`);
+  ADD CONSTRAINT `t_produits_ibfk_2` FOREIGN KEY (`NumSCat`) REFERENCES `t_s_categories` (`NumSCat`);
 
 --
--- Contraintes pour la table `T_s_Categories`
+-- Contraintes pour la table `t_s_categories`
 --
-ALTER TABLE `T_s_Categories`
-  ADD CONSTRAINT `t_s_categories_ibfk_1` FOREIGN KEY (`NumCat`) REFERENCES `T_Categories` (`NumCat`);
+ALTER TABLE `t_s_categories`
+  ADD CONSTRAINT `t_s_categories_ibfk_1` FOREIGN KEY (`NumCat`) REFERENCES `t_categories` (`NumCat`);
 
 --
 -- Contraintes pour la table `t_ventesproduits`
