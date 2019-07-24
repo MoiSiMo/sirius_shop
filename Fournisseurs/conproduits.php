@@ -3,11 +3,11 @@
 /* On ajoute la finction cors qui permet le cross-origin */
 /* pour authoriser l'appel du fichier entre backend et frontend*/
 require "../library/cors.php";
-/*on appelle la fonction cors*/
-cors();
-
 /* connexion à la db */
 require "../library/connexiondb.php";
+
+/*on appelle la fonction cors*/
+cors();
 
 /* on a ajouté le type du fichier */
 header('Content-Type: application/json');
@@ -26,11 +26,11 @@ if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_
     die();
 }
 
-$id_produits = $_REQUEST["id_produits"];
+$NumProd = $_REQUEST["NumProd"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT * FROM produits WHERE NumProd = :NumProd');
-$sth->bindValue(":NumProds", $id_produits, PDO::PARAM_INT);
+$sth = $bdd->prepare("SELECT * FROM t_produits WHERE NumProd = :NumProd;");
+$sth->bindValue(":NumProd", $NumProd, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
