@@ -30,7 +30,7 @@ $reponse = [
 
 // on fait une requete pour afficher à partir de la BD 
 // requête préparée 
-$sql = "SELECT * FROM t_produits;";
+$sql = "SELECT * FROM t_categories;";
 $stmtnt = $bdd->prepare($sql);
 $stmtnt->execute();
 
