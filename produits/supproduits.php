@@ -24,13 +24,8 @@ if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_
 $NumProd = $_REQUEST["NumProd"];
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('DELETE NumProd, NumFour, NomProd , NumSCat, QtProd, QtMinProd FROM t_produits WHERE NumProd = :NumProd');
+$sth = $bdd->prepare('DELETE FROM t_produits WHERE NumProd = :NumProd');
 $sth->bindValue(":NumProd", $NumProd, PDO::PARAM_INT);
-$sth->bindValue(":NumFour", $NumFour, PDO::PARAM_INT);
-$sth->bindValue(":NomProd", $NomProd, PDO::PARAM_STR);
-$sth->bindValue(":NumSCat", $NumSCat, PDO::PARAM_INT);
-$sth->bindValue(":QtProd", $QtProd, PDO::PARAM_INT);
-$sth->bindValue(":QtMinProd", $QtMinProd, PDO::PARAM_INT);
 $result = $sth->execute();
 
 
