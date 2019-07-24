@@ -14,7 +14,7 @@ $response = [
     "data"          => NULL,
 ];
 
-if(!isset($_REQUEST["NamProd"]) || empty($_REQUEST["NamProd"]) || !is_numeric($_REQUEST["NamProd"]))
+if(!isset($_REQUEST["NamProd"]) || empty($_REQUEST["NmProd"]) || !is_numeric($_REQUEST["NamProd"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
