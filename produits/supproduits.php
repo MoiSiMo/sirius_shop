@@ -33,6 +33,7 @@ $sth->bindValue(":QtProd", $QtProd, PDO::PARAM_INT);
 $sth->bindValue(":QtMinProd", $QtMinProd, PDO::PARAM_INT);
 $result = $sth->execute();
 
+
 if($result)
 {
     $data = "ok";
