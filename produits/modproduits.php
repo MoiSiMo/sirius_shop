@@ -1,13 +1,7 @@
 <?php
-/*
-
-
-
-*/
-
-/* On authorise les requêtes provenant de n'importe quel origine  */
-require "../libs/cors.php";
-require "../libs/connexiondb.php";
+//On authorise les requêtes provenant de n'importe quel origine 
+require "../library/cors.php";
+require "../library/connexiondb.php";
 cors();
 
 /* On spécifie que le document généré doit être au format json */
@@ -20,19 +14,39 @@ $response = [
     "data"          => NULL
 ];
 
-if(!isset($_REQUEST[""]) || empty($_REQUEST["id_computers"]) || !is_numeric($_REQUEST["id_computers"]))
+$param=["NumProd", "NumFour", "NomProd", "NumSCat", "QtProd", "QtMinProd"];
+for($i=0;  $i< count($param); $i++)
 {
-    $response["error_message"] = "Erreur paramètre";
-    echo json_encode($response);
-    die();
+    $parami=$param[$i];
+    if(!isset($_REQUEST[$parami]) || empty($_REQUEST[$parami]) )
+  {
+      $response["error_message"] = "Erreur paramètre: ".$parami;
+      echo json_encode($response);
+      die();
+  }
 }
 
-$id_computers = $_REQUEST["id_computers"];
+
+
+
+$NumProd = $_REQUEST["NumProd"];
+$NumFour = $_REQUEST["NumFour"];
+$NomProd = $_REQUEST["NomProd"];
+$NumSCat = $_REQUEST["NumSCat"];
+$QtProd = $_REQUEST["QtProd"];
+$QtMinProd = $_REQUEST["QtMinProd"];
+
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('DELETE FROM computers WHERE id_computers = :id_computers');
-$sth->bindValue(":id_computers", $id_computers, PDO::PARAM_INT);
+$sth = $bdd->prepare('UPDATE t_produits SET NumFour=:NumFour, NomProd=:NomProd, NumSCat=:NumSCat, QtProd=:QtProd, QtMinProd=:QtMinProd WHERE NumProd = :NumProd;');
+$sth->bindValue(":NumProd", $NumProd, PDO::PARAM_INT);
+$sth->bindValue(":NumFour", $NumFour, PDO::PARAM_INT);
+$sth->bindValue(":NomProd", $NomProd, PDO::PARAM_STR);
+$sth->bindValue(":NumSCat", $NumSCat, PDO::PARAM_INT);
+$sth->bindValue(":QtProd", $QtProd, PDO::PARAM_INT);
+$sth->bindValue(":QtMinProd", $QtMinProd, PDO::PARAM_INT);
 $result = $sth->execute();
+
 if($result)
 {
     $data = "ok";
