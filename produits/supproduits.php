@@ -11,21 +11,21 @@ header('Content-Type: application/json');
 $response = [
     "error"         => true,
     "error_message" => "unknown Error",
-    "data"          => NULL
+    "data"          => NULL,
 ];
 
-if(!isset($_REQUEST["NamProd_t_produits"]) || empty($_REQUEST["NamProd_t_produits"]) || !is_numeric($_REQUEST["NamProd_t_produits"]))
+if(!isset($_REQUEST["NamProd"]) || empty($_REQUEST["NamProd"]) || !is_numeric($_REQUEST["NamProd"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
     die();
 }
 
-$NamProd_t_produits = $_REQUEST["NamProd_t_produits"];
+$NamProd = $_REQUEST["NamProd"];
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('DELETE FROM t_produits WHERE NamProd_t_produits = :NamProd_t_produits');
-$sth->bindValue(":NamProd_t_produits", $NamProd_t_produits, PDO::PARAM_INT);
+$sth = $bdd->prepare('DELETE NumProd, NomProd , NumSCat, NumFour, NumSCat FROM t_produits WHERE NumProd = :NumProd');
+$sth->bindValue(":NamProd", $NamProd, PDO::PARAM_INT);
 $result = $sth->execute();
 if($result)
 {
