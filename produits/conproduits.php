@@ -26,7 +26,7 @@ if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_
  
 /* Requête : on récupère le résultat d'afficher dans produits*/
 
-$sth = $bdd->prepare('SELECT NumProd, NomProd , NumSCat, NumFour FROM t_produits WHERE NumProd =:NumProd');
+$sth = $bdd->prepare('SELECT NumProd, NomProd , NumSCat, NumFour QtProd, QtMinProd FROM t_produits WHERE NumProd =:NumProd');
 
 $sth->bindValue(":NumProd", $NumProd, PDO::PARAM_INT);
 

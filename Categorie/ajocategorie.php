@@ -13,19 +13,19 @@ $response = [
 ];
 //on vérifie si les données existe
 
-if(isset($_REQUEST["NomSCat"])&& isset($_REQUEST["NumCat"]))
+if(isset($_REQUEST["NomCat"]))
 
 {
         // on récupere les données
             
-            $NomSCat = $_REQUEST["NomSCat"];
-            $NumCat = $_REQUEST["NumCat"];
+            $NomSCat = $_REQUEST["NomCat"];
+            
             
         // on insere les produits dans la table  
         try
         {
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql_Inserer_produits="INSERT INTO t_s_categories (NomSCat, NumCat) VALUES (?,?)";
+        $sql_Inserer_produits="INSERT INTO t_categories (NomCat) VALUES (?)";
 
         // on prepare la requete    
 
@@ -33,7 +33,7 @@ if(isset($_REQUEST["NomSCat"])&& isset($_REQUEST["NumCat"]))
 
             
             $request1->bindParam(1, $NomSCat, PDO::PARAM_STR);
-            $request1->bindParam(2, $NumCat, PDO::PARAM_INT);
+
            
         //on execute la requete  
             $request1->execute();
