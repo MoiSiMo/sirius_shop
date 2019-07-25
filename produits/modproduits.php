@@ -26,9 +26,6 @@ for($i=0;  $i< count($param); $i++)
   }
 }
 
-
-
-
 $NumProd = $_REQUEST["NumProd"];
 $NumFour = $_REQUEST["NumFour"];
 $NomProd = $_REQUEST["NomProd"];
