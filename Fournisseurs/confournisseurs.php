@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 /* On ajoute la finction cors qui permet le cross-origin */
 /* pour authoriser l'appel du fichier entre backend et frontend*/
@@ -54,5 +54,3 @@ echo json_encode($response);
 
 /* on termine l'execution du script */
 die();
-
-?>
