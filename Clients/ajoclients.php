@@ -13,7 +13,7 @@ $response = [
     "data"          => NULL
 ];
 
-$param=["NomCli", "AdrCli", "VilleCli", "CdePosCli", "TelFixCli", "TelPorCli", "NumTVA"];
+$param=["NomCli", "AdrCli", "VilleCli", "CdePosCli", "TelFixCli", "TelPorCli", "NumTVA", "EmailCli", "FaxCli"];
 for($i=0;  $i< count($param); $i++)
 {
     $parami=$param[$i];
@@ -32,15 +32,19 @@ for($i=0;  $i< count($param); $i++)
             $TelFixCli = $_REQUEST["TelFixCli"];
             $TelPorCli = $_REQUEST["TelPorCli"];
             $NumTVA = $_REQUEST["NumTVA"];
+            $EmailCli = $_REQUEST["EmailCli"];
+            $FaxCli = $_REQUEST["FaxCli"];
         
-        $sth = $bdd->prepare('INSERT INTO `t_clients` ("NomCli", "AdrCli", "VilleCli", "CdePosCli", "TelFixCli", "TelPorCli", "NumTVA") VALUES (":NomCli", ":AdrCli", ":VilleCli", "CdePosCli", ":TelFixCli", ":TelPorCli", ":NumTVA")');
+        $sth = $bdd->prepare('INSERT INTO `t_clients` ("NomCli", "AdrCli", "VilleCli", "CdePosCli", "TelFixCli", "TelPorCli", "NumTVA", "EmailCli", "FaxCli") VALUES (":NomCli", ":AdrCli", ":VilleCli", ":CdePosCli", ":TelFixCli", ":TelPorCli", ":NumTVA", ":EmailCli", ":FaxCli");');
         $sth->bindValue(":NomCli", $NomCli, PDO::PARAM_STR);
-        $sth->bindValue(":PreCli", $PreCli, PDO::PARAM_STR);
+        $sth->bindValue(":AdrCli", $AdrCli, PDO::PARAM_STR);
         $sth->bindValue(":VilleCli", $VilleCli, PDO::PARAM_STR);
         $sth->bindValue(":CdePosCli", $CdePosCli, PDO::PARAM_STR);
         $sth->bindValue(":TelFixCli", $TelFixCli, PDO::PARAM_STR);
         $sth->bindValue(":TelPorCli", $TelPorCli, PDO::PARAM_STR);
         $sth->bindValue(":NumTVA", $NumTVA, PDO::PARAM_STR);
+        $sth->bindValue(":EmailCli", $EmailCli, PDO::PARAM_STR);
+        $sth->bindValue(":FaxCli", $FaxCli, PDO::PARAM_STR);
         $result = $sth->execute();
 
         if($result)

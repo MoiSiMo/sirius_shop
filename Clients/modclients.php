@@ -25,7 +25,7 @@ for($i=0;  $i< count($param); $i++)
       die();
   }
 }
-
+$NumCli = $_REQUEST["NumCli"];
 $NomCli = $_REQUEST["NomCli"];
 $AdrCli = $_REQUEST["AdrCli"];
 $VilleCli = $_REQUEST["VilleCli"];
@@ -39,6 +39,7 @@ $FaxCli = $_REQUEST["FaxCli"];
 
 /* Requête : on récupère le premier résultat dans studebts*/
 $sth = $bdd->prepare('UPDATE t_clients SET NomCli=:NomCli, AdrCli=:AdrCli, VilleCli=:VilleCli, CdePosCli=:CdePosCli, TelFixCli=:TelFixCli, TelPorCli=:TelPorCli, NumTVA=:NumTVA, EmailCli=:EmailCli, FaxCli=:FaxCli WHERE NumCli = :NumCli;');
+$sth->bindValue(":NumCli", $NumCli, PDO::PARAM_STR);
 $sth->bindValue(":NomCli", $NomCli, PDO::PARAM_STR);
 $sth->bindValue(":AdrCli", $AdrCli, PDO::PARAM_STR);
 $sth->bindValue(":VilleCli", $VilleCli, PDO::PARAM_STR);

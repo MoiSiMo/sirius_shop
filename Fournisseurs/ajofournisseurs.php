@@ -13,7 +13,7 @@ $response = [
     "data"          => NULL
 ];
 
-$param=["NumFour", "NomFour", "AdrFour", "CdePostFour", "VilleFour", "TelFixFour", "TelFixFour2", "FaxFour", "EmailFour", "SiteFour"];
+$param=["NomFour", "AdrFour", "CdePostFour", "VilleFour", "TelFixFour", "TelFixFour2", "FaxFour", "EmailFour", "SiteFour"];
 for($i=0;  $i< count($param); $i++)
 {
     $parami=$param[$i];
@@ -25,6 +25,7 @@ for($i=0;  $i< count($param); $i++)
   }
 }
         // on récupere les données
+        
         $NomFour = $_REQUEST["NomFour"];
         $AdrFour = $_REQUEST["AdrFour"];
         $CdePostFour = $_REQUEST["CdePostFour"];
@@ -35,11 +36,11 @@ for($i=0;  $i< count($param); $i++)
         $EmailFour = $_REQUEST["EmailFour"];
         $SiteFour = $_REQUEST["SiteFour"];
         
-        $sth = $bdd->prepare('INSERT INTO `t_clients` ("NomFour", "AdrFour", "CdePostFour", "VilleFour", "TelFixFour", "TelFixFour2", "FaxFour", "EmailFour", "SiteFour")
-         VALUES (":NomFour", ":AdrFour", ":CdePostFour", "VilleFour", ":TelFixFour", ":TelFixFour2", ":FaxFour", ":EmailFour", ":SiteFour")');
+        $sth = $bdd->prepare('INSERT INTO `t_fournisseurs` ("NomFour", "AdrFour", "CdePostFour", "VilleFour", "TelFixFour", "TelFixFour2", "FaxFour", "EmailFour", "SiteFour") VALUES (":NomFour", ":AdrFour", ":CdePostFour", ":VilleFour", ":TelFixFour", ":TelFixFour2", ":FaxFour", ":EmailFour", ":SiteFour");');
+        
         $sth->bindValue(":NomFour", $NomFour, PDO::PARAM_STR);
         $sth->bindValue(":AdrFour", $AdrFour, PDO::PARAM_STR);
-        $sth->bindValue(":CdePostFour", $CdePostFour, PDO::PARAM_STR);
+        $sth->bindValue(":CdePostFour", $CdePostFour, PDO::PARAM_INT);
         $sth->bindValue(":VilleFour", $VilleFour, PDO::PARAM_STR);
         $sth->bindValue(":TelFixFour", $TelFixFour, PDO::PARAM_STR);
         $sth->bindValue(":TelFixFour2", $TelFixFour2, PDO::PARAM_STR);

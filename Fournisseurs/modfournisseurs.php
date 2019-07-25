@@ -25,7 +25,7 @@ for($i=0;  $i< count($param); $i++)
       die();
   }
 }
-
+$NumFour = $_REQUEST["NumFour"];
 $NomFour = $_REQUEST["NomFour"];
 $AdrFour = $_REQUEST["AdrFour"];
 $CdePostFour = $_REQUEST["CdePostFour"];
@@ -38,7 +38,8 @@ $SiteFour = $_REQUEST["SiteFour"];
 
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('UPDATE t_produits SET NumFour=:NumFour, AdrFour=:AdrFour, CdePostFour=:CdePostFour, VilleFour=:VilleFour, TelFixFour=:TelFixFour, FaxFour=:FaxFour, EmailFour=:EmailFour, SiteFour=:SiteFour WHERE NumFour = :NumFour');
+$sth = $bdd->prepare('UPDATE t_produits SET NomFour=:NomFour, AdrFour=:AdrFour, CdePostFour=:CdePostFour, VilleFour=:VilleFour, TelFixFour=:TelFixFour, TelFixFour2=:TelFixFour2, FaxFour=:FaxFour, EmailFour=:EmailFour, SiteFour=:SiteFour WHERE NumFour = :NumFour;');
+$sth->bindValue(":NumFour", $NumFour, PDO::PARAM_INT);
 $sth->bindValue(":NomFour", $NomFour, PDO::PARAM_STR);
 $sth->bindValue(":AdrFour", $AdrFour, PDO::PARAM_STR);
 $sth->bindValue(":CdePostFour", $CdePostFour, PDO::PARAM_STR);
