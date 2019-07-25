@@ -26,10 +26,7 @@ if(!isset($_REQUEST["NumScat"]) || empty($_REQUEST["NumScat"]) || !is_numeric($_
     die();
 }
 
-
-$NumScat = $_REQUEST["NumScat"];
-
-
+$NumCat = $_REQUEST["NumCat"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
 $sth = $bdd->prepare('SELECT * FROM t_s_categories WHERE NumScat = :NumScat');
@@ -50,7 +47,6 @@ else
 
 $sth->closeCursor();
    
-
 /* On affiche le tableau après l'avoir encodé au format json */
 /* Par définition, JSON est un format d'échange de données 
 (data interchange format).*/
