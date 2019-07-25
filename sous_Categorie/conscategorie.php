@@ -12,12 +12,12 @@ require "../library/connexiondb.php";
 /* on a ajouté le type du fichier */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "unknown Error",
     "data"          => NULL
-];
+];*/
 
 if(!isset($_REQUEST["NumScat"]) || empty($_REQUEST["NumScat"]) || !is_numeric($_REQUEST["NumScat"]))
 {
@@ -26,7 +26,7 @@ if(!isset($_REQUEST["NumScat"]) || empty($_REQUEST["NumScat"]) || !is_numeric($_
     die();
 }
 
-$NumCat = $_REQUEST["NumCat"];
+$NumScat = $_REQUEST["NumScat"];
 
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
