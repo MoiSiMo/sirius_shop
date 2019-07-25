@@ -1,2 +1,3 @@
 ajout clients
 modif clients
+tOUS LES PARAM REMPLI Mais toujours errur  Nomli
