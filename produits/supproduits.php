@@ -14,19 +14,21 @@ $response = [
     "data"          => NULL,
 ];
 
-if(!isset($_REQUEST["NamProd"]) || empty($_REQUEST["NmProd"]) || !is_numeric($_REQUEST["NamProd"]))
+if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_REQUEST["NumProd"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
     die();
 }
 
-$NamProd = $_REQUEST["NamProd"];
+$NumProd = $_REQUEST["NumProd"];
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('DELETE NumProd, NomProd , NumSCat, NumFour, NumSCat FROM t_produits WHERE NumProd = :NumProd');
-$sth->bindValue(":NamProd", $NamProd, PDO::PARAM_INT);
+$sth = $bdd->prepare('DELETE FROM t_produits WHERE NumProd = :NumProd');
+$sth->bindValue(":NumProd", $NumProd, PDO::PARAM_INT);
 $result = $sth->execute();
+
+
 if($result)
 {
     $data = "ok";

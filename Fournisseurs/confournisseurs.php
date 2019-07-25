@@ -19,18 +19,18 @@ $response = [
     "data"          => NULL
 ];
 
-if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_REQUEST["NumProd"]))
+if(!isset($_REQUEST["NumFour"]) || empty($_REQUEST["NumFour"]) || !is_numeric($_REQUEST["NumFour"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
     die();
 }
 
-$NumProd = $_REQUEST["NumProd"];
+$NumFour = $_REQUEST["NumFour"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare("SELECT * FROM t_produits WHERE NumProd = :NumProd;");
-$sth->bindValue(":NumProd", $NumProd, PDO::PARAM_INT);
+$sth = $bdd->prepare("SELECT * FROM t_fournisseurs WHERE NumFour = :NumFour;");
+$sth->bindValue(":NumFour", $NumFour, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
