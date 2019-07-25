@@ -35,7 +35,7 @@ $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
 {
-    $item = $sth->fetchAll();
+    $item = $sth->fetchAll(PDO::FETCH_ASSOC);
     $response["data"] = $item;
     $response["error"] = false;
 }
