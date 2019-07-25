@@ -18,7 +18,7 @@ if(isset($_REQUEST["NomCat"]))
 {
         // on récupere les données
             
-            $NomSCat = $_REQUEST["NomCat"];
+            $NomCat = $_REQUEST["NomCat"];
             
             
         // on insere les produits dans la table  
@@ -32,7 +32,7 @@ if(isset($_REQUEST["NomCat"]))
         $request1 = $bdd->prepare($sql_Inserer_produits);
 
             
-            $request1->bindParam(1, $NomSCat, PDO::PARAM_STR);
+            $request1->bindParam(1, $NomCat, PDO::PARAM_STR);
 
            
         //on execute la requete  

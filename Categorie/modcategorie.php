@@ -1,63 +1,61 @@
 <?php
-
-/* On ajoute la finction cors qui permet le cross-origin */
-/* pour authoriser l'appel du fichier entre backend et frontend*/
+//On authorise les requêtes provenant de n'importe quel origine 
 require "../library/cors.php";
-/*on appelle la fonction cors*/
+require "../library/connexiondb.php";
 cors();
 
-/* connexion à la db */
-require "../library/connexiondb.php";
-
-/* on a ajouté le type du fichier */
+/* On spécifie que le document généré doit être au format json */
 header('Content-Type: application/json');
 
-
-/*
-    on construit un tableau php
-    ICI, on doir respecter le format demandé car les frontends  (dans cet exercice)
-    s'attendent à recevoir se format
-    
-    pour une première itération/intéraction avec les frontends
-
-*/
-$reponse = [
-    "error"         => true, /* indique si il y a une erreur ou non */
-    "error_message" => "Uknown error", /* il indique le message d'erreur pour les front */
-    "data"          => "" /* il sert à afficher se qu'on envoie aux front - les données de réponses */
+/* Réponse par défaut*/
+$response = [
+    "error"         => true,
+    "error_message" => "Uknown Error",
+    "data"          => NULL
 ];
 
-
-// on fait une requete pour afficher à partir de la BD 
-// requête préparée 
-$sql = "SELECT * FROM t_categories;";
-$stmtnt = $bdd->prepare($sql);
-$stmtnt->execute();
-
-
-// on vérifie si il y a des données de la requête SQL (plus que 0 résultat) 
-if($stmtnt && $stmtnt->rowCount() > 0)
+$param=["NomCat"];
+for($i=0;  $i< count($param); $i++)
 {
-    //on récuèpre le résultat et on le met sur la ligne
-    //on traite l'entrée du résultat de la requête
-    $toutes_lignes = $stmtnt->fetchAll(PDO::FETCH_ASSOC);
-   
-    //on met le nom et le prenom dans $reponse["data"]
-    $reponse["data"] = $toutes_lignes;
-    //on dit qu'il n'y a pas d'erreur
-    $reponse["error"] = false;
-    //on dit qu'il n'y a pas d'erreur donc pas de message d'erreur
-    $reponse["error_message"] = "";
+    $parami=$param[$i];
+    if(!isset($_REQUEST[$parami]) || empty($_REQUEST[$parami]) )
+  {
+      $response["error_message"] = "Erreur paramètre: ".$parami;
+      echo json_encode($response);
+      die();
+  }
+}
+
+$NomCat = $_REQUEST["NomCat"];
+
+
+
+/* Requête : on récupère le premier résultat dans studebts*/
+$sth = $bdd->prepare('UPDATE t_categories SET  NomCat=value  WHERE NumCat=:NumCat');
+$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_STR);
+
+$result = $sth->execute();
+
+if($result)
+{
+    $data = "ok";
+    $response["data"] = $data;
+    $response["error_message"] = "";
+    $response["error"] = false;
 }
 else
 {
-    //on affiche le message si la condition n'est pas remplie (pas d'entrées dans ce cas)
-    $reponse["error_message"] = "Pas de données";
+    $response["error_message"] = "ERROR QUERY";
 }
 
 
-/* on convertit en json le tableau $reponse et on l'affiche avec echo*/
-echo json_encode($reponse);
+$sth->closeCursor();
+   
 
-/*on termine le script*/
+/* On affiche le tableau après l'avoir encodé au format json */
+/* Par définition, JSON est un format d'échange de données 
+(data interchange format).*/
+echo json_encode($response);
+
+/* on termine l'execution du script */
 die();
