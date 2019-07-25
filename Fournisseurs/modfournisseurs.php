@@ -14,7 +14,7 @@ $response = [
     "data"          => NULL
 ];
 
-$param=["NomFour", "AdrFour", "CdePostFour", "VilleFour", "TelFixFour", "TelFixFour2", "FaxFour", "EmailFour", "SiteFour"];
+$param=["NumFour", "NomFour", "AdrFour", "CdePostFour", "VilleFour", "TelFixFour", "TelFixFour2", "FaxFour", "EmailFour", "SiteFour"];
 for($i=0;  $i< count($param); $i++)
 {
     $parami=$param[$i];
@@ -38,16 +38,16 @@ $SiteFour = $_REQUEST["SiteFour"];
 
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('UPDATE t_produits SET NumFour=:NumFour, NomProd=:NomProd, NumSCat=:NumSCat, QtProd=:QtProd, QtMinProd=:QtMinProd WHERE NumProd = :NumProd;');
-$sth->bindValue(":NomFour", $NomFour, PDO::PARAM_INT);
-$sth->bindValue(":AdrFour", $AdrFour, PDO::PARAM_INT);
+$sth = $bdd->prepare('UPDATE t_produits SET NumFour=:NumFour, AdrFour=:AdrFour, CdePostFour=:CdePostFour, VilleFour=:VilleFour, TelFixFour=:TelFixFour, FaxFour=:FaxFour, EmailFour=:EmailFour, SiteFour=:SiteFour WHERE NumFour = :NumFour');
+$sth->bindValue(":NomFour", $NomFour, PDO::PARAM_STR);
+$sth->bindValue(":AdrFour", $AdrFour, PDO::PARAM_STR);
 $sth->bindValue(":CdePostFour", $CdePostFour, PDO::PARAM_STR);
-$sth->bindValue(":VilleFour", $VilleFour, PDO::PARAM_INT);
-$sth->bindValue(":TelFixFour", $TelFixFour, PDO::PARAM_INT);
-$sth->bindValue(":TelFixFour2", $TelFixFour2, PDO::PARAM_INT);
-$sth->bindValue(":FaxFour", $FaxFour, PDO::PARAM_INT);
-$sth->bindValue(":EmailFour", $EmailFour, PDO::PARAM_INT);
-$sth->bindValue(":SiteFour", $SiteFour, PDO::PARAM_INT);
+$sth->bindValue(":VilleFour", $VilleFour, PDO::PARAM_STR);
+$sth->bindValue(":TelFixFour", $TelFixFour, PDO::PARAM_STR);
+$sth->bindValue(":TelFixFour2", $TelFixFour2, PDO::PARAM_STR);
+$sth->bindValue(":FaxFour", $FaxFour, PDO::PARAM_STR);
+$sth->bindValue(":EmailFour", $EmailFour, PDO::PARAM_STR);
+$sth->bindValue(":SiteFour", $SiteFour, PDO::PARAM_STR);
 $result = $sth->execute();
 
 if($result)

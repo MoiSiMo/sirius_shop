@@ -33,7 +33,7 @@ for($i=0;  $i< count($param); $i++)
             $TelPorCli = $_REQUEST["TelPorCli"];
             $NumTVA = $_REQUEST["NumTVA"];
         
-        $sth = $bdd->prepare(INSERT INTO `t_clients` ("NomCli", "AdrCli", "VilleCli", "CdePosCli", "TelFixCli", "TelPorCli", "NumTVA") VALUES (":NomCli", ":AdrCli", ":VilleCli", "CdePosCli", ":TelFixCli", ":TelPorCli", ":NumTVA"));
+        $sth = $bdd->prepare('INSERT INTO `t_clients` ("NomCli", "AdrCli", "VilleCli", "CdePosCli", "TelFixCli", "TelPorCli", "NumTVA") VALUES (":NomCli", ":AdrCli", ":VilleCli", "CdePosCli", ":TelFixCli", ":TelPorCli", ":NumTVA")');
         $sth->bindValue(":NomCli", $NomCli, PDO::PARAM_STR);
         $sth->bindValue(":PreCli", $PreCli, PDO::PARAM_STR);
         $sth->bindValue(":VilleCli", $VilleCli, PDO::PARAM_STR);
