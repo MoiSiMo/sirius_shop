@@ -14,18 +14,18 @@ $response = [
     "data"          => NULL,
 ];
 
-if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_REQUEST["NumProd"]))
+if(!isset($_REQUEST["NumCat"]) || empty($_REQUEST["NumCat"]) || !is_numeric($_REQUEST["NumCat"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
     die();
 }
 
-$NumProd = $_REQUEST["NumProd"];
+$NumCat = $_REQUEST["NumCat"];
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('DELETE FROM t_produits WHERE NumProd = :NumProd');
-$sth->bindValue(":NumProd", $NumProd, PDO::PARAM_INT);
+$sth = $bdd->prepare("DELETE FROM t_categories WHERE NumCat=:NumCat");
+$sth->bindValue(":NumCat",$NumCat, PDO::PARAM_INT);
 $result = $sth->execute();
 
 
@@ -34,7 +34,7 @@ if($result)
     $data = "ok";
     $response["data"] = $data;
     $response["error_message"] = "";
-    $response["error"] = false;
+    $response["error"] = true;
 }
 else
 {

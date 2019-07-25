@@ -26,13 +26,13 @@ if(!isset($_REQUEST["NumScat"], $_REQUEST["NomScat"] ) || empty($_REQUEST["NumSc
     die();
 }
 
-$NomSCat = $_REQUEST["NomSCat"];
 $NumCat = $_REQUEST["NumCat"];
+
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
 $sth = $bdd->prepare('SELECT * FROM t_s_categories WHERE NumScat = :NumScat');
-$sth->bindValue(":NomSCat", $NomSCat, PDO::PARAM_STR);
-$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
+$sth->bindValue(":NumScat", $NumScat, PDO::PARAM_INT);
+
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
