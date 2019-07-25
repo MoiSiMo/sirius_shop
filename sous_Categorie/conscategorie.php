@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 /* On ajoute la finction cors qui permet le cross-origin */
 /* pour authoriser l'appel du fichier entre backend et frontend*/
@@ -19,18 +19,20 @@ $response = [
     "data"          => NULL
 ];
 
-if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_REQUEST["NumProd"]))
+if(!isset($_REQUEST["NumScat"]) || empty($_REQUEST["NumScat"]) || !is_numeric($_REQUEST["NumScat"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
     die();
 }
 
-$id_produits = $_REQUEST["id_produits"];
+$NomSCat = $_REQUEST["NomSCat"];
+$NumCat = $_REQUEST["NumCat"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT * FROM produits WHERE NumProd = :NumProd');
-$sth->bindValue(":NumProds", $id_produits, PDO::PARAM_INT);
+$sth = $bdd->prepare('SELECT * FROM t_s_categories WHERE NumScat = :NumScat');
+$sth->bindValue(":NomSCat", $NomSCat, PDO::PARAM_STR);
+$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
@@ -41,12 +43,11 @@ if($result && $sth->rowCount()> 0)
 }
 else
 {
-    $response["error_message"] = "L'entrée $id_produits n'a pas été trouvée !";
+    $response["error_message"] = "L'entrée $NumScat n'a pas été trouvée !";
 }
 
 $sth->closeCursor();
    
-
 /* On affiche le tableau après l'avoir encodé au format json */
 /* Par définition, JSON est un format d'échange de données 
 (data interchange format).*/

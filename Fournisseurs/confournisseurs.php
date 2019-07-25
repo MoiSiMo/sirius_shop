@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 /* On ajoute la finction cors qui permet le cross-origin */
 /* pour authoriser l'appel du fichier entre backend et frontend*/
@@ -12,12 +12,12 @@ cors();
 /* on a ajouté le type du fichier */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "unknown Error",
     "data"          => NULL
-];
+];*/
 
 if(!isset($_REQUEST["NumFour"]) || empty($_REQUEST["NumFour"]) || !is_numeric($_REQUEST["NumFour"]))
 {
@@ -29,19 +29,19 @@ if(!isset($_REQUEST["NumFour"]) || empty($_REQUEST["NumFour"]) || !is_numeric($_
 $NumFour = $_REQUEST["NumFour"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare("SELECT * FROM t_fournisseurs WHERE NumFour = :NumFour;");
+$sth = $bdd->prepare('SELECT * FROM t_fournisseurs WHERE NumFour =:NumFour');
 $sth->bindValue(":NumFour", $NumFour, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
 {
-    $item = $sth->fetchAll();
+    $item = $sth->fetchAll(PDO::FETCH_ASSOC);
     $response["data"] = $item;
     $response["error"] = false;
 }
 else
 {
-    $response["error_message"] = "L'entrée $id_produits n'a pas été trouvée !";
+    $response["error_message"] = "L'entrée $NumFour n'a pas été trouvée !";
 }
 
 $sth->closeCursor();
@@ -54,5 +54,3 @@ echo json_encode($response);
 
 /* on termine l'execution du script */
 die();
-
-?>

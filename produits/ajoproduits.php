@@ -12,7 +12,7 @@
     ];
     //on vérifie si les données existe
     if(isset($_REQUEST["NumFour"]) && isset($_REQUEST["NomProd"])&& 
-    isset($_REQUEST["NumSCat"])&& isset($_REQUEST["QtProd"])&& 
+    isset($_REQUEST["NumSCat"]) && isset($_REQUEST["QtProd"])&& 
     isset($_REQUEST["QtMinProd"]))
     {
             // on récupere les données
@@ -50,7 +50,7 @@
                     $response["msg"]="données enregistré"; 
                 }
                 catch(Exception $e){
-                    $response["error_message"] = "erreur de données";
+                    $response["error_message"] = "erreur de données".$e->getMessage();
                     $response["error"] = true;
                 }
                             
