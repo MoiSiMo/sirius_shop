@@ -32,7 +32,7 @@ $NumCat = $_REQUEST["NumCat"];
 
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT NomScat, NumCat FROM t_s_categories WHERE NumScat = :NumScat');
+$sth = $bdd->prepare('SELECT * FROM t_s_categories WHERE NumScat = :NumScat');
 $sth->bindValue(":NomSCat", $NomSCat, PDO::PARAM_STR);
 $sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
 $result = $sth->execute();

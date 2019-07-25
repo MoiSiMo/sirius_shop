@@ -12,12 +12,12 @@ cors();
 /* on a ajouté le type du fichier */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "unknown Error",
     "data"          => NULL
-];
+];*/
 
 if(!isset($_REQUEST["NumFour"]) || empty($_REQUEST["NumFour"]) || !is_numeric($_REQUEST["NumFour"]))
 {
@@ -29,7 +29,9 @@ if(!isset($_REQUEST["NumFour"]) || empty($_REQUEST["NumFour"]) || !is_numeric($_
 $NumFour = $_REQUEST["NumFour"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare("SELECT * FROM t_fournisseurs WHERE NumFour = :NumFour;");
+$sth = $bdd->prepare("SELECT NomFour, AdrFour, CdePostFour, VilleFour, TelFixFour, TelFixFour2, FaxFour, EmailFour, SiteFour FROM t_fournisseurs WHERE NumFour = :NumFour");
+
+
 $sth->bindValue(":NumFour", $NumFour, PDO::PARAM_INT);
 $result = $sth->execute();
 
