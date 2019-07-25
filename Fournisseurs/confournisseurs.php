@@ -29,21 +29,19 @@ if(!isset($_REQUEST["NumFour"]) || empty($_REQUEST["NumFour"]) || !is_numeric($_
 $NumFour = $_REQUEST["NumFour"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare("SELECT NomFour, AdrFour, CdePostFour, VilleFour, TelFixFour, TelFixFour2, FaxFour, EmailFour, SiteFour FROM t_fournisseurs WHERE NumFour = :NumFour");
-
-
+$sth = $bdd->prepare('SELECT * FROM t_fournisseurs WHERE NumFour =:NumFour');
 $sth->bindValue(":NumFour", $NumFour, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
 {
-    $item = $sth->fetchAll();
+    $item = $sth->fetchAll(PDO::FETCH_ASSOC);
     $response["data"] = $item;
     $response["error"] = false;
 }
 else
 {
-    $response["error_message"] = "L'entrée $id_produits n'a pas été trouvée !";
+    $response["error_message"] = "L'entrée $NumFour n'a pas été trouvée !";
 }
 
 $sth->closeCursor();
