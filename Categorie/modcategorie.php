@@ -7,14 +7,14 @@ cors();
 /* On spécifie que le document généré doit être au format json */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "Uknown Error",
     "data"          => NULL
-];
+];*/
 
-$param=["NomCat"];
+$param=["NumCat", "NomCat"];
 for($i=0;  $i< count($param); $i++)
 {
     $parami=$param[$i];
@@ -27,14 +27,15 @@ for($i=0;  $i< count($param); $i++)
 }
 
 $NomCat = $_REQUEST["NomCat"];
-
+$NumCat = $_REQUEST["NumCat"];
 
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('UPDATE t_categories SET  NomCat=value  WHERE NumCat=:NumCat');
-$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_STR);
-
+$sth = $bdd->prepare('UPDATE t_categories SET NomCat = :NomCat WHERE NumCat = :NumCat;');
+$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
+$sth->bindValue(":NomCat", $NomCat, PDO::PARAM_STR);
 $result = $sth->execute();
+
 
 if($result)
 {

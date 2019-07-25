@@ -7,12 +7,12 @@ cors();
 /* On spécifie que le document généré doit être au format json */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "Uknown Error",
     "data"          => NULL
-];
+];*/
 
 $param=["NumSCat", "NomSCat", "NumCat"];
 for($i=0;  $i< count($param); $i++)
@@ -34,7 +34,7 @@ $NumCat = $_REQUEST["NumCat"];
 /* Requête : on récupère le premier résultat dans studebts*/
 $sth = $bdd->prepare('UPDATE t_s_categories SET NomSCat=:NomSCat, NumCat=:NumCat WHERE NumSCat = :NumSCat;');
 $sth->bindValue(":NomSCat", $NomSCat, PDO::PARAM_STR);
-$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_STR);
+$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
 
 $result = $sth->execute();
 

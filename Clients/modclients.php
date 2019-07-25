@@ -7,12 +7,12 @@ cors();
 /* On spécifie que le document généré doit être au format json */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "Uknown Error",
     "data"          => NULL
-];
+];*/
 
 $param=["NumCli", "NomCli", "AdrCli", "VilleCli", "CdePosCli", "TelFixCli", "TelPorCli", "NumTVA", "EmailCli", "FaxCli"];
 for($i=0;  $i< count($param); $i++)
