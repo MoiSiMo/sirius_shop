@@ -14,7 +14,7 @@ $response = [
     "data"          => NULL
 ];
 
-$param=["NumCat", "NomCat"];
+$param=["NomCat"];
 for($i=0;  $i< count($param); $i++)
 {
     $parami=$param[$i];
@@ -26,12 +26,13 @@ for($i=0;  $i< count($param); $i++)
   }
 }
 
-$NomCli = $_REQUEST["NomCat"];
+$NomCat = $_REQUEST["NomCat"];
+
 
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('UPDATE t_categories SET NomCat=:NomCat WHERE NumCat = :NumCat;');
-$sth->bindValue(":NomCat", $NomCat, PDO::PARAM_STR);
+$sth = $bdd->prepare('UPDATE t_categories SET  NomCat=value  WHERE NumCat=:NumCat');
+$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_STR);
 
 $result = $sth->execute();
 
