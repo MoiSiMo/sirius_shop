@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 25 juil. 2019 à 06:15
+-- Généré le :  jeu. 25 juil. 2019 à 07:00
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.4
 
@@ -83,20 +83,22 @@ CREATE TABLE `t_clients` (
   `CdePosCli` varchar(50) NOT NULL,
   `TelFixCli` varchar(50) NOT NULL,
   `TelPorCli` varchar(50) NOT NULL,
-  `NumTVA` varchar(50) NOT NULL
+  `NumTVA` varchar(50) NOT NULL,
+  `EmailCli` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `t_clients`
 --
 
-INSERT INTO `t_clients` (`NumCli`, `NomCli`, `AdrCli`, `VilleCli`, `CdePosCli`, `TelFixCli`, `TelPorCli`, `NumTVA`) VALUES
-(1, 'Spitaels Rene', 'Rue de Thys 37', 'Marche-en-Famenne', '6900', '084214209', '', ''),
-(2, 'Quisquater Muriel', 'Rue de Pondire 24A\r\n', 'Ciney', '5590', ' 083 21 77 75', '0478 97 67 55', ''),
-(3, 'Lepage Stephane', 'Route de Cortil-Wodon 33', 'Eghezée', '5310', '081512138', '', ''),
-(4, 'Eraly Marc', 'Berkenboslaan 4\r\n', 'Tremelo', '3120', '', '0496869645', ''),
-(5, 'Jean Voets, Dhr.', 'Baversstraat 41', 'Tongres', '3700', '012230583', '', ''),
-(6, 'Lion Laurence', 'Rue de Leuze 31', 'Beloeil', '7972', ' 069 55 33 58', '0498 57 04 21', '');
+INSERT INTO `t_clients` (`NumCli`, `NomCli`, `AdrCli`, `VilleCli`, `CdePosCli`, `TelFixCli`, `TelPorCli`, `NumTVA`, `EmailCli`) VALUES
+(1, 'Spitaels Rene', 'Rue de Thys 37', 'Marche-en-Famenne', '6900', '084214209', '', '', ''),
+(2, 'Quisquater Muriel', 'Rue de Pondire 24A\r\n', 'Ciney', '5590', ' 083 21 77 75', '0478 97 67 55', '', ''),
+(3, 'Lepage Stephane', 'Route de Cortil-Wodon 33', 'Eghezée', '5310', '081512138', '', '', ''),
+(4, 'Eraly Marc', 'Berkenboslaan 4\r\n', 'Tremelo', '3120', '', '0496869645', '', ''),
+(5, 'Jean Voets, Dhr.', 'Baversstraat 41', 'Tongres', '3700', '012230583', '', '', ''),
+(6, 'Lion Laurence', 'Rue de Leuze 31', 'Beloeil', '7972', ' 069 55 33 58', '0498 57 04 21', '', ''),
+(7, 'Vandaele Julien', 'Paalsesteenweg 283', 'Beringen', '3583', '011425857', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -330,7 +332,7 @@ ALTER TABLE `t_categories`
 -- AUTO_INCREMENT pour la table `t_clients`
 --
 ALTER TABLE `t_clients`
-  MODIFY `NumCli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `NumCli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `t_factures`
