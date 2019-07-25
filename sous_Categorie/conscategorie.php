@@ -19,7 +19,7 @@ $response = [
     "data"          => NULL
 ];*/
 
-if(!isset($_REQUEST["NumScat"]) || empty($_REQUEST["NumScat"]) || !is_numeric($_REQUEST["NumScat"]))
+if(!isset($_REQUEST["NumScat"], $_REQUEST["NomScat"] ) || empty($_REQUEST["NumScat"] ) || empty($_REQUEST["NomScat"] ) || !is_numeric($_REQUEST["NumScat"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
