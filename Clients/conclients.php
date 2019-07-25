@@ -12,36 +12,36 @@ require "../library/connexiondb.php";
 /* on a ajouté le type du fichier */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "unknown Error",
     "data"          => NULL
-];
+];*/
 
-if(!isset($_REQUEST["NumProd"]) || empty($_REQUEST["NumProd"]) || !is_numeric($_REQUEST["NumProd"]))
+if(!isset($_REQUEST["NumCli"]) || empty($_REQUEST["NumCli"]) || !is_numeric($_REQUEST["NumCli"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
     die();
 }
 
-$id_produits = $_REQUEST["id_produits"];
+$NumCli = $_REQUEST["NumCli"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT * FROM produits WHERE NumProd = :NumProd');
-$sth->bindValue(":NumProds", $id_produits, PDO::PARAM_INT);
+$sth = $bdd->prepare('SELECT * FROM t_clients WHERE NumCli = :NumCli');
+$sth->bindValue(":NumCli", $NumCli, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
 {
-    $item = $sth->fetchAll();
+    $item = $sth->fetchAll(PDO::FETCH_ASSOC);
     $response["data"] = $item;
     $response["error"] = false;
 }
 else
 {
-    $response["error_message"] = "L'entrée $id_produits n'a pas été trouvée !";
+    $response["error_message"] = "L'entrée $NumCli n'a pas été trouvée !";
 }
 
 $sth->closeCursor();

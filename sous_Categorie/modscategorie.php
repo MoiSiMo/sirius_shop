@@ -14,7 +14,7 @@ $response = [
     "data"          => NULL
 ];
 
-$param=["NomSCat", "NumCat"];
+$param=["NumSCat", "NomSCat", "NumCat"];
 for($i=0;  $i< count($param); $i++)
 {
     $parami=$param[$i];

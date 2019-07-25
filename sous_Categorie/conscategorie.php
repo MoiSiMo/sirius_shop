@@ -32,7 +32,6 @@ $NumScat = $_REQUEST["NumScat"];
 /* Requête : on récupère le résultat d'afficher dans produits*/
 $sth = $bdd->prepare('SELECT * FROM t_s_categories WHERE NumScat = :NumScat');
 $sth->bindValue(":NumScat", $NumScat, PDO::PARAM_INT);
-
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)

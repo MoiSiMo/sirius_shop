@@ -12,12 +12,12 @@ require "../library/connexiondb.php";
 /* on a ajouté le type du fichier */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "unknown Error",
     "data"          => NULL
-];
+];*/
 
 if(!isset($_REQUEST["NumCat"]) || empty($_REQUEST["NumCat"]) || !is_numeric($_REQUEST["NumCat"]))
 {
@@ -29,7 +29,7 @@ if(!isset($_REQUEST["NumCat"]) || empty($_REQUEST["NumCat"]) || !is_numeric($_RE
 $NumCat = $_REQUEST["NumCat"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT * FROM produits WHERE NumProd = :NumProd');
+$sth = $bdd->prepare('SELECT * FROM t_categories WHERE NumCat = :NumCat');
 $sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
 $result = $sth->execute();
 
