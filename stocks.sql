@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 25 juil. 2019 à 07:04
--- Version du serveur :  10.1.38-MariaDB
--- Version de PHP :  7.3.4
+-- Généré le :  jeu. 25 juil. 2019 à 09:27
+-- Version du serveur :  10.3.16-MariaDB
+-- Version de PHP :  7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -163,28 +163,30 @@ CREATE TABLE `t_produits` (
   `NumProd` int(11) NOT NULL,
   `NumFour` int(11) NOT NULL,
   `NomProd` varchar(50) NOT NULL,
-  `NumSCat` int(11) NOT NULL
+  `NumSCat` int(11) NOT NULL,
+  `QtProd` int(11) NOT NULL,
+  `QtMinProd` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `t_produits`
 --
 
-INSERT INTO `t_produits` (`NumProd`, `NumFour`, `NomProd`, `NumSCat`) VALUES
-(1, 1, 'Zalman i3', 1),
-(2, 2, 'Cooler Master MasterBox Q300L', 1),
-(3, 1, 'Zalman i3', 1),
-(4, 2, 'Cooler Master MasterBox Q300L', 1),
-(5, 2, 'Cooler Master MasterBox E500L Argent', 1),
-(6, 3, 'Cooler Master MasterCase H500', 1),
-(7, 1, 'Corsair Builder Series VS450 80PLUS V2', 2),
-(8, 2, 'Corsair Builder Series VS550 80PLUS V2', 2),
-(9, 3, 'Corsair Builder Series VS650 80PLUS V2', 2),
-(10, 2, 'Corsair RM650x V2 80PLUS Gold', 2),
-(11, 3, 'Seagate BarraCuda 2 To (ST2000DM008)', 3),
-(12, 1, 'Seagate BarraCuda 1 To (ST1000DM010)', 3),
-(13, 3, 'Samsung SSD 860 QVO 1 To', 3),
-(14, 1, 'Samsung SSD 860 EVO 500 Go', 3);
+INSERT INTO `t_produits` (`NumProd`, `NumFour`, `NomProd`, `NumSCat`, `QtProd`, `QtMinProd`) VALUES
+(1, 1, 'Zalman i3', 1, 10, 3),
+(2, 2, 'Cooler Master MasterBox Q300L', 1, 20, 3),
+(3, 1, 'Zalman i3', 1, 15, 3),
+(4, 2, 'Cooler Master MasterBox Q300L', 1, 5, 3),
+(5, 2, 'Cooler Master MasterBox E500L Argent', 1, 25, 3),
+(6, 3, 'Cooler Master MasterCase H500', 1, 15, 3),
+(7, 1, 'Corsair Builder Series VS450 80PLUS V2', 2, 12, 3),
+(8, 2, 'Corsair Builder Series VS550 80PLUS V2', 2, 8, 3),
+(9, 3, 'Corsair Builder Series VS650 80PLUS V2', 2, 10, 3),
+(10, 2, 'Corsair RM650x V2 80PLUS Gold', 2, 6, 3),
+(11, 3, 'Seagate BarraCuda 2 To (ST2000DM008)', 3, 5, 3),
+(12, 1, 'Seagate BarraCuda 1 To (ST1000DM010)', 3, 9, 3),
+(13, 3, 'Samsung SSD 860 QVO 1 To', 3, 12, 3),
+(14, 1, 'Samsung SSD 860 EVO 500 Go', 3, 30, 3);
 
 -- --------------------------------------------------------
 
