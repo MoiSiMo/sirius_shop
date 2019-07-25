@@ -54,4 +54,4 @@ echo json_encode($response);
 /* on termine l'execution du script */
 die();
 
-?>
+?> 
