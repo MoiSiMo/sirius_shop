@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 /* On ajoute la finction cors qui permet le cross-origin */
 /* pour authoriser l'appel du fichier entre backend et frontend*/
@@ -30,7 +30,7 @@ $NomSCat = $_REQUEST["NomSCat"];
 $NumCat = $_REQUEST["NumCat"];
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT NomScat, NumCat FROM t_s_categories WHERE NumScat = :NumScat');
+$sth = $bdd->prepare('SELECT * FROM t_s_categories WHERE NumScat = :NumScat');
 $sth->bindValue(":NomSCat", $NomSCat, PDO::PARAM_STR);
 $sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
 $result = $sth->execute();

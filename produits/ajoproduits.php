@@ -50,7 +50,7 @@
                     $response["msg"]="données enregistré"; 
                 }
                 catch(Exception $e){
-                    $response["error_message"] = "erreur de données: " . $e->getMessage();
+                    $response["error_message"] = "erreur de données".$e->getMessage();
                     $response["error"] = true;
                 }
                             
