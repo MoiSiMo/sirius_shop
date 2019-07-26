@@ -25,7 +25,7 @@ for($i=0;  $i< count($param); $i++)
   }
 }
         // on récupere les données
-            $NumCli = $_REQUEST["NumCli"];
+            
             $NomCli = $_REQUEST["NomCli"];
             $AdrCli = $_REQUEST["AdrCli"];
             $VilleCli = $_REQUEST["VilleCli"];
@@ -36,8 +36,8 @@ for($i=0;  $i< count($param); $i++)
             $EmailCli = $_REQUEST["EmailCli"];
             $FaxCli = $_REQUEST["FaxCli"];
         
-        $sth = $bdd->prepare('INSERT INTO `t_clients` ("NumCli", "NomCli", "AdrCli", "VilleCli", "CdePosCli", "TelFixCli", "TelPorCli", "NumTVA", "EmailCli", "FaxCli") VALUES (":NomCli", ":AdrCli", ":VilleCli", ":CdePosCli", ":TelFixCli", ":TelPorCli", ":NumTVA", ":EmailCli", ":FaxCli");');
-        $sth->bindValue(":NumCli", $NumCli, PDO::PARAM_INT);
+        $sth = $bdd->prepare('INSERT INTO `t_clients` (NomCli, AdrCli, VilleCli, CdePosCli, TelFixCli, TelPorCli, NumTVA, EmailCli, FaxCli) VALUES (:NomCli, :AdrCli, :VilleCli, :CdePosCli, :TelFixCli, :TelPorCli, :NumTVA, :EmailCli, :FaxCli);');
+        
         $sth->bindValue(":NomCli", $NomCli, PDO::PARAM_STR);
         $sth->bindValue(":AdrCli", $AdrCli, PDO::PARAM_STR);
         $sth->bindValue(":VilleCli", $VilleCli, PDO::PARAM_STR);

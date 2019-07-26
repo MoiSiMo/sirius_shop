@@ -25,7 +25,7 @@ for($i=0;  $i< count($param); $i++)
       die();
   }
 }
-
+$NumSCat = $_REQUEST["NumSCat"];
 $NomSCat = $_REQUEST["NomSCat"];
 $NumCat = $_REQUEST["NumCat"];
 
@@ -33,9 +33,9 @@ $NumCat = $_REQUEST["NumCat"];
 
 /* Requête : on récupère le premier résultat dans studebts*/
 $sth = $bdd->prepare('UPDATE t_s_categories SET NomSCat=:NomSCat, NumCat=:NumCat WHERE NumSCat = :NumSCat;');
-$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
+$sth->bindValue(":NumSCat", $NumSCat, PDO::PARAM_INT);
 $sth->bindValue(":NomSCat", $NomSCat, PDO::PARAM_STR);
-
+$sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
 
 $result = $sth->execute();
 

@@ -21,11 +21,11 @@ if(!isset($_REQUEST["NumSCat"]) || empty($_REQUEST["NumSCat"]) || !is_numeric($_
     die();
 }
 
-$NumCli = $_REQUEST["NumCli"];
+$NumSCat = $_REQUEST["NumSCat"];
 
 /* Requête : on récupère le premier résultat dans studebts*/
 $sth = $bdd->prepare('DELETE FROM t_s_categories WHERE NumSCat = :NumSCat');
-$sth->bindValue(":NumCli", $NumCli, PDO::PARAM_INT);
+$sth->bindValue(":NumSCat", $NumSCat, PDO::PARAM_INT);
 $result = $sth->execute();
 
 

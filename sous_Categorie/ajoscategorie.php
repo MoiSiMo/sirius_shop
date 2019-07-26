@@ -13,26 +13,24 @@ $response = [
     "data"          => NULL
 ];
 
-$param=["NomSCat", "NumCat"];
-for($i=0;  $i< count($param); $i++)
-{
-    $parami=$param[$i];
-    if(!isset($_REQUEST[$parami]) || empty($_REQUEST[$parami]) )
+
+    if(!isset($_REQUEST["NomSCat"]) || empty($_REQUEST["NomSCat"]) || !isset($_REQUEST["NumCat"]) || empty($_REQUEST["NumCat"]))
   {
-      $response["error_message"] = "Erreur paramètre: ".$parami;
+      $response["error_message"] = "Erreur paramètre: ";
       echo json_encode($response);
       die();
   }
-}
+
         // on récupere les données
-            $NomSCat = $_REQUEST["NomSCat"];
-            $NumCat = $_REQUEST["NumCat"];
+        
+        $NomSCat = $_REQUEST["NomSCat"];
+        $NumCat = $_REQUEST["NumCat"];
             
         
-        $sth = $bdd->prepare('INSERT INTO `t_s_categories` ("NomSCat", "NumCat") VALUES (":NomCli", ":AdrCli")');
-        $sth->bindValue(":NomSCat", $NomSCat, PDO::PARAM_STR);
-        $sth->bindValue(":NumCat", $NumCat, PDO::PARAM_STR);
+        $sth = $bdd->prepare('INSERT INTO t_s_categories (NomSCat, NumCat) VALUES (:NomSCat, :NumCat);');
         
+        $sth->bindValue(":NomSCat", $NomSCat, PDO::PARAM_STR);
+        $sth->bindValue(":NumCat", $NumCat, PDO::PARAM_INT);
         $result = $sth->execute();
 
         if($result)

@@ -19,19 +19,19 @@ $response = [
     "data"          => NULL
 ];*/
 
-if(!isset($_REQUEST["NumScat"]) || empty($_REQUEST["NumScat"] ) || !is_numeric($_REQUEST["NumScat"]))
+if(!isset($_REQUEST["NumSCat"]) || empty($_REQUEST["NumSCat"] ) || !is_numeric($_REQUEST["NumSCat"]))
 {
     $response["error_message"] = "Erreur paramètre";
     echo json_encode($response);
     die();
 }
 
-$NumScat = $_REQUEST["NumScat"];
+$NumSCat = $_REQUEST["NumSCat"];
 
 
 /* Requête : on récupère le résultat d'afficher dans produits*/
-$sth = $bdd->prepare('SELECT * FROM t_s_categories WHERE NumScat = :NumScat');
-$sth->bindValue(":NumScat", $NumScat, PDO::PARAM_INT);
+$sth = $bdd->prepare('SELECT * FROM t_s_categories WHERE NumSCat = :NumSCat');
+$sth->bindValue(":NumSCat", $NumSCat, PDO::PARAM_INT);
 $result = $sth->execute();
 
 if($result && $sth->rowCount()> 0)
