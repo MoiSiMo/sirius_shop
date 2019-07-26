@@ -7,12 +7,12 @@ cors();
 /* On spécifie que le document généré doit être au format json */
 header('Content-Type: application/json');
 
-/* Réponse par défaut*/
+/* Réponse par défaut
 $response = [
     "error"         => true,
     "error_message" => "Uknown Error",
     "data"          => NULL
-];
+];*/
 
 $param=["NumFour", "NomFour", "AdrFour", "CdePostFour", "VilleFour", "TelFixFour", "TelFixFour2", "FaxFour", "EmailFour", "SiteFour"];
 for($i=0;  $i< count($param); $i++)
@@ -38,7 +38,7 @@ $SiteFour = $_REQUEST["SiteFour"];
 
 
 /* Requête : on récupère le premier résultat dans studebts*/
-$sth = $bdd->prepare('UPDATE t_produits SET NomFour=:NomFour, AdrFour=:AdrFour, CdePostFour=:CdePostFour, VilleFour=:VilleFour, TelFixFour=:TelFixFour, TelFixFour2=:TelFixFour2, FaxFour=:FaxFour, EmailFour=:EmailFour, SiteFour=:SiteFour WHERE NumFour = :NumFour;');
+$sth = $bdd->prepare('UPDATE t_fournisseurs SET NomFour=:NomFour, AdrFour=:AdrFour, CdePostFour=:CdePostFour, VilleFour=:VilleFour, TelFixFour=:TelFixFour, TelFixFour2=:TelFixFour2, FaxFour=:FaxFour, EmailFour=:EmailFour, SiteFour=:SiteFour WHERE NumFour = :NumFour;');
 $sth->bindValue(":NumFour", $NumFour, PDO::PARAM_INT);
 $sth->bindValue(":NomFour", $NomFour, PDO::PARAM_STR);
 $sth->bindValue(":AdrFour", $AdrFour, PDO::PARAM_STR);
