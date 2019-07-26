@@ -1,0 +1,170 @@
+
+-- Structure de la table `t_achatsproduits`
+--
+
+CREATE TABLE `t_achatsproduits` (
+  `NumAchProd` int(11) NOT NULL,
+  `NumProd` int(11) NOT NULL,
+  `QteAch` int(11) NOT NULL,
+  `PrixUnitAch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+Ajout : http://192.168.1.111/api/sirius_shop/achat%20produits/ajoachatprod.php?NumProd=5&QteAch=100&PrixUnitAch=215
+Modifier : http://192.168.1.111/api/sirius_shop/achat%20produits/modachatprod.php?NumAchProd=4&NumProd=5&QteAch=100&PrixUnitAch=215
+Consulte : http://192.168.1.111/api/sirius_shop/achat%20produits/conachatprod.php?NumAchProd=5
+List : http://192.168.1.111/api/sirius_shop/achat%20produits/listachatprod.php
+Suppreme : http://192.168.1.111/api/sirius_shop/achat%20produits/supachatprod.php?NumAchProd=5
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_categories`
+--
+
+CREATE TABLE `t_categories` (
+  `NumCat` int(11) NOT NULL,
+  `NomCat` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+Ajout : http://192.168.1.111/api/sirius_shop/Categorie/ajocategorie.php?NomCat=aaaaaaaaa
+Modifier : http://192.168.1.111/api/sirius_shop/Categorie/modcategorie.php?NumCat=11&NomCat=zzzzzzzzz
+Consulte : http://192.168.1.111/api/sirius_shop/Categorie/concategorie.php?NumCat=11
+List : http://192.168.1.111/api/sirius_shop/Categorie/listcategorie.php
+Suppreme : http://192.168.1.111/api/sirius_shop/Categorie/supcategorie.php?NumCat=11
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_clients`
+--
+
+CREATE TABLE `t_clients` (
+  `NumCli` int(11) NOT NULL,
+  `NomCli` varchar(50) NOT NULL,
+  `AdrCli` varchar(100) NOT NULL,
+  `VilleCli` varchar(50) NOT NULL,
+  `CdePosCli` varchar(50) NOT NULL,
+  `TelFixCli` varchar(50) NOT NULL,
+  `TelPorCli` varchar(50) NOT NULL,
+  `NumTVA` varchar(50) NOT NULL,
+  `EmailCli` varchar(100) NOT NULL,
+  `FaxCli` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+Ajout : http://192.168.1.111/api/sirius_shop/Clients/ajoclients.php?NomCli=aaaaaaaa&AdrCli=bbbbbbbbbb&VilleCli=ppppppp&CdePosCli=dddddddd&TelFixCli=123654799&TelPorCli=321456987&NumTVA=456987&EmailCli=ana@gmail.com&FaxCli=987456321
+Modifier : http://192.168.1.111/api/sirius_shop/Clients/modclients.php?NumCli=8&NomCli=aaaaaaaa&AdrCli=bbbbbbbbbb&VilleCli=ppppppp&CdePosCli=dddddddd&TelFixCli=123654799&TelPorCli=321456987&NumTVA=456987&EmailCli=howa@gmail.com&FaxCli=987456321
+Consulte : http://192.168.1.111/api/sirius_shop/Clients/conclients.php?NumCli=10
+List : http://192.168.1.111/api/sirius_shop/Clients/listclients.php
+Suppreme : http://192.168.1.111/api/sirius_shop/Clients/supclients.php?NumCli=10
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_factures`
+--
+
+CREATE TABLE `t_factures` (
+  `NumListFact` int(11) NOT NULL,
+  `NumCli` int(11) NOT NULL,
+  `NumFact` int(11) NOT NULL,
+  `DateFact` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+Ajout : http://192.168.1.111/api/sirius_shop/Facture/ajofacture.php?%20&NumCli=5&NumFact=1111111&DateFact=12/01/21
+Modifier : http://192.168.1.111/api/sirius_shop/Facture/modfacture.php?NumListFact=6&NumCli=8&NumFact=7777777&DateFact=12/01/20
+Consulte : http://192.168.1.111/api/sirius_shop/Facture/confacture.php?NumListFact=6
+List : http://192.168.1.111/api/sirius_shop/Facture/listfacture.php
+Suppreme : http://192.168.1.111/api/sirius_shop/Facture/supfacture.php?NumListFact=6
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_fournisseurs`
+--
+
+CREATE TABLE `t_fournisseurs` (
+  `NumFour` int(11) NOT NULL,
+  `NomFour` varchar(50) NOT NULL,
+  `AdrFour` varchar(100) NOT NULL,
+  `CdePostFour` varchar(11) NOT NULL,
+  `VilleFour` varchar(50) NOT NULL,
+  `TelFixFour` varchar(50) NOT NULL,
+  `TelFixFour2` varchar(50) NOT NULL,
+  `FaxFour` varchar(50) NOT NULL,
+  `EmailFour` varchar(50) NOT NULL,
+  `SiteFour` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+Ajout : http://192.168.1.111/api/sirius_shop/Fournisseurs/ajofournisseurs.php?NomFour=aaaaaaaa&AdrFour=bbbbbbb&CdePostFour=1236544&VilleFour=gfdgfdgfdgdfg&TelFixFour=1235447&TelFixFour2=789554411255&FaxFour=8186686768&EmailFour=ana@gmail.com&SiteFour=www.dfdsfdsfdsfdsfd.be
+Modifier : http://192.168.1.111/api/sirius_shop/Fournisseurs/modfournisseurs.php?NumFour=8&NomFour=ttttttttt&AdrFour=bbbbbbb&CdePostFour=44444&VilleFour=Liege&TelFixFour=11111111&TelFixFour2=22222222&FaxFour=33333333&EmailFour=woha@gmail.com&SiteFour=www.sirius.be
+Consulte : http://192.168.1.111/api/sirius_shop/Fournisseurs/confournisseurs.php?NumFour=8
+List : http://192.168.1.111/api/sirius_shop/Fournisseurs/listfournisseurs.php
+Suppreme : http://192.168.1.111/api/sirius_shop/Fournisseurs/supfournisseurs.php?NumFour=8
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_produits`
+--
+
+CREATE TABLE `t_produits` (
+  `NumProd` int(11) NOT NULL,
+  `NumFour` int(11) NOT NULL,
+  `NomProd` varchar(50) NOT NULL,
+  `NumSCat` int(11) NOT NULL,
+  `QtProd` int(11) NOT NULL,
+  `QtMinProd` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+
+Ajout : http://192.168.1.111/api/sirius_shop/produits/ajoproduits.php?%20NumFour=1&NomProd=aaaaaaaaa&NumSCat=2&QtProd=10&QtMinProd=2
+Modifier : http://192.168.1.111/api/sirius_shop/produits/modproduits.php?NumProd=22&NumFour=1&NomProd=zzzzzzzz&NumSCat=2&QtProd=10&QtMinProd=3
+Consulte : http://192.168.1.111/api/sirius_shop/produits/conproduits.php?NumProd=5
+List : http://192.168.1.111/api/sirius_shop/produits/listproduits.php
+Suppreme : http://192.168.1.111/api/sirius_shop/produits/supproduits.php?NumProd=24
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_s_categories`
+--
+
+CREATE TABLE `t_s_categories` (
+  `NumSCat` int(11) NOT NULL,
+  `NomSCat` varchar(50) NOT NULL,
+  `NumCat` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+Ajout : http://192.168.1.111/api/sirius_shop/sous_Categorie/ajoscategorie.php?NomSCat=ana&NumCat=2
+Modifier : http://192.168.1.111/api/sirius_shop/sous_Categorie/modscategorie.php?NumSCat=18&NomSCat=tttttttt&NumCat=3
+Consulte : http://192.168.1.111/api/sirius_shop/sous_Categorie/conscategorie.php?NumSCat=18
+List : http://192.168.1.111/api/sirius_shop/sous_Categorie/listscategorie.php
+Suppreme : http://192.168.1.111/api/sirius_shop/sous_Categorie/supscategorie.php?NumSCat=18
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_ventesproduits`
+--
+
+CREATE TABLE `t_ventesproduits` (
+  `NumVenProd` int(11) NOT NULL,
+  `NumLisFact` int(11) NOT NULL,
+  `NumProd` int(11) NOT NULL,
+  `NumCli` int(11) NOT NULL,
+  `NumAchProd` int(11) NOT NULL,
+  `PrixVenUnit` int(11) NOT NULL,
+  `TauxTva` int(11) NOT NULL,
+  `QteVen` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+Ajout : http://192.168.1.111/api/sirius_shop/Vente%20produits/ajoventeprod.php?NumLisFact=5&NumProd=18&NumCli=8&NumAchProd=4&PrixVenUnit=120&TauxTva=21&QteVen=5
+Modifier : http://192.168.1.111/api/sirius_shop/Vente%20produits/modventeprod.php?NumVenProd=5&NumLisFact=5&NumProd=2&NumCli=4&NumAchProd=3&PrixVenUnit=200&TauxTva=10&QteVen=5
+Consulte : http://192.168.1.111/api/sirius_shop/Vente%20produits/conventeprod.php?NumVenProd=4
+List : http://192.168.1.111/api/sirius_shop/Vente%20produits/listventeprod.php
+Suppreme : http://192.168.1.111/api/sirius_shop/Vente%20produits/supventeprod.php?NumVenProd=5
